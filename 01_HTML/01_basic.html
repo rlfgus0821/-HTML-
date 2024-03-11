@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- lang 속성: 웹페이지의 사용언어를 (구글)검색 엔진에 제공 --->
+<head>
+    <!--
+    <head>태그에 넣을 수 있는 태그들
+
+    <meta>: 웹페이지에 추가 정보 전달: 문자코드
+    <title>: 페이지 제목 저장
+    <script>: (자바)스크립트 추가
+    <link>: 웹페이지에 파일 추가
+    <style>: css3(스타일시트) 추가
+    <base>: 웹페이지의 기본 경로 지정
+    -->
+    <meta charset="UTF-8">
+    <title>웹페이지 기본</title>
+    <!-- 내부스타일
+    <style>
+        h1{
+            color: orange;
+            background: white;
+            }
+    </style>
+    -->
+    <!-- 외부스타일 -->
+
+    <link rel="stylesheet" href="style.css">
+    <!--<script>
+        alert('경고!');
+    </script>
+    -->
+    <!-- javascript -->
+    <script>
+        // 한줄 주석
+        /* 여러줄 주석 */
+        function show() { // <img>에 이미지 달기
+		    document.getElementById("fig").src = "img/apple.png"
+	    }
+	    function hide() { // <img>에 이미지 제거
+		    document.getElementById("fig").src= "";
+	    }
+    </script>
+</head>
+<body>
+    <h1>Hello World!</h1>  <!--제목: 굵고 줄간격이 들어가있다.-->
+    <p>지금은 HTML구조와 형식을 배우고 있어요!</p>
+    html, css3
+    <br> <!--줄바꿈-->
+    Javascript
+    <h3 onmouseover="show()" onmouseout="hide()">사과</h3>
+    <div><img id="fig" src=""></div>
+
+</body>
+</html>
