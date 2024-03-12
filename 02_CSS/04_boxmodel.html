@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3: 박스모델</title>
+    <style>
+        .div { background : mistyrose;
+                width : 150px;
+                height :80px;
+                margin : 0 30px 0 30px; /* top right bottom left */
+                padding : 0 20px 0 20px;
+                border : 20px solid pink;}
+        #thick {border-width : thick solid red;
+                padding : 5px;
+                margin : 3px;}
+        #solid {border : solid green;}
+        #dashed {border : dashed 2px gray;}
+    </style>
+</head>
+<body>
+    <h2>css3: 박스모델(boxmodel)과 속성</h2>
+    <div>
+    <p>박스모델의 구성요소</p>
+    <ul>
+        <li>content: HTML 태그의 텍스트나 이미지가 출력되는 부분</li>
+        <li>padding: 콘텐츠를 직접 둘러싸고 있는 내부 여백</li>
+        <li>border: 패딩 외부의 테두리</li>
+        <li>margin: 박스의 맨 바깥 영역</li>
+    </ul>
+    </div>
+    <div>
+        <p>박스모델의 속성</p>
+        <ul>
+            <li>content와 관련된 속성: width, height</li>
+            <li>padding과 관련된 속성: padding, padding-top, padding-bottom, padding-left, padding-right</li>
+            <li>border와 관련된 속성: border 선의 모양, 선굵기, 선색상</li>
+                <ul>
+                    <li>border-width: border-top-width, -bottom, -left, -right</li>
+                    <li>border-style: border-top-style, -bottom, -left, -right</li>
+                    <li>border-color: border-top-color, -bottom, -left, -right</li>
+                </ul>
+            <li>margin과 관련된 속성: margin, margin-top, -bottom, -left, -right</li>
+        </ul>
+    </div>
+    <hr>
+    <h3>BoxModel Ex</h3>
+    <div class="div">
+        DIVDIV
+    </div>
+    <hr>
+<p>box 모델의 padding과 margin의 값 지정 방식</p>
+<ul>
+    <li>margin: 값 => 위, 오른쪽, 아래, 왼쪽의 여백을 동일한 값으로 설정</li>
+    <li>margin: 값1, 값2 => 위, 아래는 값1로 오른쪽, 왼쪽은 값2로 설정</li>
+    <li>margin: 값1, 값2, 값3, 값4 => 위 값1, 오른쪽 값2, 아래 값3, 왼쪽 값4로 설정</li>
+</ul>
+<p>border-style속성의 값</p>
+    <ul>
+        <li id="thick"> border-width : thick</li>
+        <li id="dashed"> border-style : dashed</li>
+        <li id="solid"> border-style : solid</li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>css3: 표 꾸미기</title>
+    <style>
+      table{border:1px solid yellowgreen;
+            border-collapse: collapse;}
+      td, th {border: 1px dotted green;}
+      th {height: 40px; width:100px; background:mistyrose; color:pink;}
+      td {height: 20px; width:100px; text-align:center;}
+      input[type=text] {color: darkred; background:mistyrose;
+                        border:2px dotted;border-radius:20px;}
+      input[type=password] {color: darkred; background:mistyrose;
+                    border:2px dashed; border-radius:20px;}
+    </style>
+</head>
+<body>
+  <h2>표 꾸미기</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th>HTML</th>
+        <th>python</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>홍길동</td>
+        <td>80</td>
+        <td>90</td>
+      </tr>
+      <tr>
+          <td>방자</td>
+          <td>90</td>
+          <td>80</td>
+        </tr>
+      <tr>
+          <td>춘향이</td>
+          <td>85</td>
+          <td>95</td>
+        </tr>
+    </tbody>
+  </table>
+  <h3>입력 폼 꾸미기</h3>
+  <hr>
+  <form>
+    아이디: <input type="text" name="id"> <br>
+    비밀번호: <input type="password" name="pwd"><br>
+    이름: <input type="text" name="name"><br>
+  </form>
+</body>
+</html>
