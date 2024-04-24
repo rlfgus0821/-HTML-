@@ -23,7 +23,21 @@ st.page_link('pages/연습문제.py', label='Exercise', disabled=True)
 st.page_link('https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/'
              ,label='Emojis', icon='🌝')
 
-st.subheader('Submit button', divider=True)
+st.subheader('Form_Submit_button', divider=True)
+
+with st.form(key='form1'):
+    id= st.text_input('Id')
+    pw= st.text_input('Password', type='password')
+    submitted = st.form_submit_button()
+    if submitted:
+        st.write('id:', id,'password:',pw)
+        
+form = st.form(key='form2')
+title = form.text_input('제목 / text_input')
+contents = form.text_area(('질문입력 / text_area'))
+submit = form.form_submit_button('작성 / submit button')
+if submit:
+    st.write('제목:', title)
 
 st.header('2. Selection elements')
 st.subheader('Checkbox', divider=True)
@@ -119,3 +133,33 @@ st.write(f'현재 숫자:{num}')
 st.subheader('Slider', divider=True)
 score = st.slider('점수', min_value=0.0, max_value=100.0, value=20.0,step=0.1)
 st.write(f'현재 점수: {score}점')
+
+st.header('4. Text input elements')
+st.subheader('Text input', divider=True)
+id = st.text_input('아이디', value='id')
+pw = st.text_input('비밀번호',type='password')
+st.write(f'아이디: {id}, 비밀번호: {pw}')
+
+st.subheader('Text area', divider=True)
+text = st.text_area('질문을 입력하시오.')
+st.write(text)
+
+st.header('5. Date & Time input elements')
+st.subheader('Date input', divider=True)
+
+from datetime import datetime, date, time, timedelta
+date = st.date_input('일자 선택', value=date(2024,3,1),
+                     min_value=date(2023,1,1)
+                     ,max_value=date(2024,12,31),
+                     format='YYYY.MM.DD')
+st.write(date)
+
+st.subheader('Time input', divider=True)
+time = st.time_input('시간입력',value=time(8,45),
+                     step=timedelta(minutes=1))
+st.write(time)
+
+import time
+with st.spinner('Wait for it...'):
+    time.sleep(3)
+st.success('Success!')

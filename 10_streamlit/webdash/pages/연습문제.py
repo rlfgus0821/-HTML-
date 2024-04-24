@@ -4,6 +4,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 from collections import Counter
 from wordcloud import WordCloud
+import seaborn as sns
 from konlpy.tag import Okt
 from nltk.corpus import stopwords
 from matplotlib import font_manager, rc
@@ -61,4 +62,3 @@ def news_dist(names, column='제목', n=10):
 
 news_dist('경제',n=20)
 news_dist('사회',n=20)
-
