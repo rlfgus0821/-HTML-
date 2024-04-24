@@ -56,7 +56,7 @@ def news_dist(names, column='제목', n=10):
             font_path = 'C:/Windows/Fonts/malgun.ttf'
             wordcloud = WordCloud(font_path=font_path).generate(title)
             plt.axis('off')
-            plt.imshow(wordcloud, interpolation='bilinear')
+            st.image(wordcloud.to_array(), caption='WordCloud')
             plt.show()
 
 news_dist('경제',n=20)
