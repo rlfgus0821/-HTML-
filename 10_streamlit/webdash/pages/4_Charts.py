@@ -139,7 +139,7 @@ st.divider()
 
 st.header('경기도 인구데이터 지도 시각화')
 import json
-with open('data/경기도행정구역경계.json', encoding='utf-8') as f:
+with open('../data/경기도행정구역경계.json', encoding='utf-8') as f:
     geo_gg = json.loads(f.read())
 df_gg = pd.read_excel('data/경기도인구데이터.xlsx', index_col='구분')
 

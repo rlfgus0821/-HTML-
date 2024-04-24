@@ -62,7 +62,7 @@ st.markdown('num_rows=dynamic')
 st.data_editor(df3_part1, num_rows='dynamic')
 
 st.header('3. table: st.table()')
-st.markdown('table() -> 데이터 프레임 뿐만 아니라 리스트, 딕셔너리 등 표시')
+st.markdown('table() -> 데이터 프레임 뿐만 아니라 리스트, 딕셔너리 등 표시 / 모든 내용을 다 보여준다.')
 st.table(df3.iloc[:3])
 
 st.subheader('add_rows()')
