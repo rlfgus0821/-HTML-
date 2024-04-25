@@ -19,7 +19,7 @@ st.subheader('Page link', divider=True)
 st.page_link('app.py', label='Home', icon='🏠')
 st.page_link('pages/1_Text_elements.py', label='Text elements')
 st.page_link('pages/2_Data_elements.py', label='Data elements')
-st.page_link('pages/연습문제.py', label='Exercise', disabled=True)
+st.page_link('pages/연습문제 1.py', label='Exercise', disabled=True)
 st.page_link('https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/'
              ,label='Emojis', icon='🌝')
 
