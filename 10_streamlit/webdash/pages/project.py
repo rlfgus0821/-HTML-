@@ -156,20 +156,19 @@ hotel
 col1, col2, col3 = st.columns([1,2,3],gap='medium')
 
 with col1:
-    keyword = st.radio(label="키워드",
-            key="키워드",
-            options=one_keywordlist,index=None)
-# keyword = st.selectbox('키워드',options=one_keywordlist,placeholder='키워드를 선택하세요!',index=None)
+    # keyword = st.radio(label="키워드",
+    #         key="키워드",
+    #         options=one_keywordlist,index=None)
+    keyword = st.selectbox('키워드',options=one_keywordlist,placeholder='키워드를 선택하세요!',index=None)
 st.write(keyword)
 
 with col2:
     one_sor_freq = freq_topn(one,keyword,10)
-# hotels = st.selectbox('키워드',options=one_sor_freq['hotel_name'].tolist(),placeholder='호텔을 선택하세요!',index=None)
-    hotels = st.radio(label="호텔",
-            key='호텔',
-            options=one_sor_freq['hotel_name'].tolist(),index=None)
+    hotels = st.selectbox('키워드',options=one_sor_freq['hotel_name'].tolist(),placeholder='호텔을 선택하세요!',index=None)
+#     hotels = st.radio(label="호텔",
+#             key='호텔',
+#             options=one_sor_freq['hotel_name'].tolist(),index=None)
 st.write(hotels)
-
 
 with col3:
     hotel_name, services, review = click_hotel(one, hotels, 3)
