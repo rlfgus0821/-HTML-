@@ -30,40 +30,6 @@ def dict(df):
         df.at[i, 'good_keyword_freq'] = ast.literal_eval(df.at[i, 'good_keyword_freq'])
     return df
 
-# 2. 리뷰 높은순 정렬
-def review_sort(df):
-    for i in range(len(df)):
-        reviews = df.loc[i, 'star&reviews']
-        # NaN인 경우 빈 리스트로 처리
-        if isinstance(reviews, float) and np.isnan(reviews):
-            sorted_reviews = []
-        else:
-            sorted_reviews = sorted(reviews, key=lambda x: x[0], reverse=True)
-        df.loc[i, 'star&reviews'] = str(sorted_reviews)
-        df.at[i, 'star&reviews'] = ast.literal_eval(df.at[i, 'star&reviews'])
-    return df
-
-# 3. 키워드 빈도수 정리
-def count_keyword(df, keywordlist):
-    df['good_keyword_freq'] = pd.Series(dtype=str)
-    for i in range(len(df)):
-        keyword_freq = {}
-        for keyword in keywordlist:
-            try:
-                if df.loc[i, 'good'].count(keyword):
-                    freq = df.loc[i,'good'].count(keyword)
-                    keyword_freq[keyword] = freq
-            except:
-                keyword_freq[keyword] = '0'
-        df.loc[i,'good_keyword_freq'] = str(keyword_freq)
-
-# 'services'에 nan값을 []로 변경
-lists = cnam, one, gg, ic, cbook, jeju, seoul, gnam, gbook, daegu,daej, busan, sejong, ulsan, jnam, jbook, gj
-for idx, df in enumerate(lists):
-    lists[idx]['services'] = df['services'].fillna("[]")
-cnam, one, gg, ic, cbook, jeju, seoul, gnam, gbook, daegu,daej, busan, sejong, ulsan, jnam, jbook, gj = lists
-
-# 지역별 긍정 키워드 TOP10
 one_keywordlist = '청결 객실 시설 바다 직원 속초 이용 가격 예약 위치'.split()
 cnam_keywordlist = '청결 시설 객실 이용 직원 주변 조식 가격 화장실 주차'.split()
 gg_keywordlist = '청결 객실 직원 이용 시설 주변 주차 침대 조식 가격'.split()
@@ -81,43 +47,15 @@ ulsan_keywordlist = '청결 객실 주차 시설 위치 직원 조식 가격 침
 jnam_keywordlist = '청결 객실 시설 직원 여수 조식 가격 침대 이용 바다'.split()
 jbook_keywordlist = '청결 직원 객실 시설 전주 조식 마을 이용 침대 위치'.split()
 gj_keywordlist = '청결 조식 시설 직원 객실 이용 주차 침대 가격 주변'.split()
-
-# 키워드 빈도수 세기 모든 지역 진행
-lists = [cnam, one, gg, ic, cbook, jeju, seoul, gnam, gbook, daegu,daej, busan, sejong, ulsan, jnam, jbook, gj]
-keyword_lists =[cnam_keywordlist, one_keywordlist, gg_keywordlist, ic_keywordlist, cbook_keywordlist, jeju_keywordlist, seoul_keywordlist, gnam_keywordlist, gbook_keywordlist,daegu_keywordlist, daej_keywordlist, busan_keywordlist, sejong_keywordlist, ulsan_keywordlist,jnam_keywordlist, jbook_keywordlist, gj_keywordlist]
-
-keyword_dict = {}
-for idx, df in enumerate(lists):
-    count_keyword(lists[idx], keyword_lists[idx])
-
-cnam, one, gg, ic, cbook, jeju, seoul, gnam, gbook, daegu,daej, busan, sejong, ulsan, jnam, jbook, gj = lists
-
 # 모든 지역 진행
 lists = cnam, one, gg, ic, cbook, jeju, seoul, gnam, gbook, daegu,daej, busan, sejong, ulsan, jnam, jbook, gj
 
 for i in lists:
-    try:
-        dict(i)
-        review_sort(i)
-    except (SyntaxError, ValueError):
-        pass
+    dict(i)
+
 cnam, one, gg, ic, cbook, jeju, seoul, gnam, gbook, daegu,daej, busan, sejong, ulsan, jnam, jbook, gj = lists
 
-# TOP10긍정 키워드 비율 딕셔너리에서 키워드 선택하면 그 키워드 topn 정렬 후 추출
-def ratio_topn(df,keyword,n):
-# 'good_keyword_ratio' 열의 각 행에 있는 딕셔너리를 기반으로 keyword 키의 값을 추출하여 리스트에 저장
-    clean_list = []
-    for i in range(len(df['good_keyword_ratio'])):
-        dict = df.at[i, 'good_keyword_ratio']
-        if keyword in dict:
-            clean_list.append(dict[keyword])
-        else:  # keyword 키가 없으면 기본값으로 0을 추가
-            clean_list.append(0)
-    # 데이터프레임을 정렬
-    df_sorted = df.iloc[pd.Series(clean_list).sort_values(ascending=False).index][:n]
-    return df_sorted
 
-# TOP10긍정 키워드 빈도수 딕셔너리에서 키워드 선택하면 그 키워드 topn 정렬 후 추출
 def freq_topn(df,keyword,n):
     clean_list = []
     for i in range(len(df['good_keyword_freq'])):
@@ -129,6 +67,7 @@ def freq_topn(df,keyword,n):
     # 데이터프레임을 정렬
     df_sorted = df.iloc[pd.Series(clean_list).sort_values(ascending=False).index][:n]
     return df_sorted
+
 
 # TOPn 리뷰 추출
 def review_topn(df,hotel_name, n):
@@ -144,12 +83,7 @@ def click_hotel(df,hotel_name,n):
     review = review_topn(df,hotel_name,n)
     return hotel, services, review
 
-one_sor_freq = freq_topn(one,'청결',10)
-one_sor_freq['hotel_name'].tolist()
-
-hotel, services, review = click_hotel(one_sor_freq,'속초 비즈니스 호텔 카멜',3)
-
-hotel
+seoul_sor_freq = freq_topn(seoul,'청결',10)
 
 # 2) multiselect를 이용하여 품종(species)을 선택하면, 해당 품종의 데이터에 대한 데이터프레임으로 표시
 
@@ -159,16 +93,14 @@ with col1:
     # keyword = st.radio(label="키워드",
     #         key="키워드",
     #         options=one_keywordlist,index=None)
-    keyword = st.selectbox('키워드',options=one_keywordlist,placeholder='키워드를 선택하세요!',index=None)
-st.write(keyword)
+    keyword = st.selectbox('키워드',options=one_keywordlist,placeholder='키워드를 선택하세요!')
 
 with col2:
     one_sor_freq = freq_topn(one,keyword,10)
-    hotels = st.selectbox('키워드',options=one_sor_freq['hotel_name'].tolist(),placeholder='호텔을 선택하세요!',index=None)
+    hotels = st.selectbox('키워드',options=one_sor_freq['hotel_name'].tolist(),placeholder='호텔을 선택하세요!')
 #     hotels = st.radio(label="호텔",
 #             key='호텔',
 #             options=one_sor_freq['hotel_name'].tolist(),index=None)
-st.write(hotels)
 
 with col3:
     hotel_name, services, review = click_hotel(one, hotels, 3)
