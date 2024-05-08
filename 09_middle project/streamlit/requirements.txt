@@ -1,0 +1,12 @@
+folium==0.16.0
+JPype1==1.5.0
+konlpy==0.6.0
+matplotlib==3.8.4
+numpy==1.26.4
+openpyxl==3.1.2
+pandas==2.2.2
+seaborn==0.13.2
+streamlit==1.33.0
+streamlit_folium==0.20.0
+wordcloud==1.9.3
+haversine==2.8.1
