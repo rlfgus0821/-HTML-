@@ -22,7 +22,7 @@ def goodbad_wordcloud(region):
     if region == '세종':
         col1, col2 = st.columns(2)
         # font_path = 'C:/Windows/Fonts/malgun.ttf'
-        wc = WordCloud(width=400, height=400, max_words=50, font_path='NanumGothic.ttf',
+        wc = WordCloud(width=400, height=400, max_words=50, font_path='fonts/malgun.ttf',
                        background_color='white').generate_from_frequencies(df2)
 
         fig = plt.figure(figsize=(8, 8))
@@ -38,7 +38,7 @@ def goodbad_wordcloud(region):
     else:
         col1, col2 = st.columns(2)
         # font_path = 'C:/Windows/Fonts/malgun.ttf'
-        wc = WordCloud(width=400, height=400, max_words=50, font_path='NanumGothic.ttf',
+        wc = WordCloud(width=400, height=400, max_words=50, font_path='fonts/malgun.ttf',
                        background_color='white').generate_from_frequencies(df2)
 
         fig = plt.figure(figsize=(8, 8))
@@ -48,7 +48,7 @@ def goodbad_wordcloud(region):
         col1.subheader('<긍정 키워드>')
         col1.pyplot(fig)
 
-        wc2 = WordCloud(width=400, height=400, max_words=50, font_path='NanumGothic.ttf',
+        wc2 = WordCloud(width=400, height=400, max_words=50, font_path='fonts/malgun.ttf',
                        background_color='white').generate_from_frequencies(df4)
 
         fig = plt.figure(figsize=(8, 8))
